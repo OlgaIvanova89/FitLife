@@ -16,21 +16,19 @@ def get_user_info():
 
 
 def calculate_bmi(weight, height):
-    """Returns body mass index calculated from weight anf height"""
+    """Returns body mass index calculated from weight and height"""
     # Расчет индекса массы тела
-    bmi = round(weight / (height ** 2), 1)
-    return bmi
+    return round(weight / (height ** 2), 1)
 
 
 def calculate_water_needed(weight):
-    """Returns an amount of water is needed for a person per day in litre"""
+    """Returns an amount of water is needed for a person per day in litres"""
     # количество воды, необходимое на 1 кг веса человека, в мл
     WATER_NEED_PER_KILO = 30
     # количество воды, необходимое пользователю, в мл
     water_ml = weight * WATER_NEED_PER_KILO
     # количество воды, необходимое пользователю, в л
-    water_litres = water_ml / 1000
-    return water_litres
+    return water_ml / 1000
 
 
 def output_bmi_and_water_calculation():
