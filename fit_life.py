@@ -1,26 +1,50 @@
 # Проект FitLife - MVP версия 1.0
+def welcome_user():
+    """Returns name and age of application user"""
+    print("Приветсвуем вас в нашем приложении FitLife!")
+    user_name = input("Введите ваше имя: ").title()
+    print(f"Привет, {user_name}!")
+    user_age = int(input("Введите ваш возраст в годах (например, 23): "))
+    return user_name, user_age
 
 
-# 1. Знакомство
-# TODO: Спроси у пользователя имя и сохрани в переменную user_name
-# TODO: Спроси возраст и сохрани в переменную user_age (не забудь преобразовать в число)
+def get_user_info():
+    """Returns weight and height of an application user"""
+    user_weight = float(input("Введите ваш вес в кг (56 или 56.2): "))
+    user_height = float(input("Введите ваш рост в метрах (например, 1.7): "))
+    return user_weight, user_height
 
 
-# 2. Сбор данных
-# TODO: Запроси вес (в кг) и сохрани в user_weight (тип float)
-# TODO: Запроси рост (в метрах, например 1.75) и сохрани в user_height (тип float)
+def calculate_bmi(weight, height):
+    """Returns body mass index calculated from weight anf height"""
+    # Расчет индекса массы тела
+    bmi = round(weight / (height ** 2), 1)
+    return bmi
 
 
-# 3. Логика расчетов (Функции как "черный ящик": используем арифметику)
-# Формула ИМТ: вес разделить на (рост в квадрате)
-# TODO: Рассчитай bmi (Индекс массы тела)
+def calculate_water_needed(weight):
+    """Returns an amount of water is needed for a person per day in litre"""
+    # количество воды, необходимое на 1 кг веса человека, в мл
+    WATER_NEED_PER_KILO = 30
+    # количество воды, необходимое пользователю, в мл
+    water_ml = weight * WATER_NEED_PER_KILO
+    # количество воды, необходимое пользователю, в л
+    water_litres = water_ml / 1000
+    return water_litres
 
 
-# Подсчет воды: вес * 30 мл
-# TODO: Рассчитай water_needed
+def output_bmi_and_water_calculation():
+    """Print report for user"""
+    user_name, user_age = welcome_user()
+    user_weight, user_height = get_user_info()
+    user_bmi = calculate_bmi(user_weight, user_height)
+    water_litres = calculate_water_needed(user_weight)
+    print()
+    print(f"Отчет для пользователя: {user_name} ({user_age} г.)")
+    print(f"Твой индекс массы тела: {user_bmi}")
+    print(f"Рекомендуемая норма воды: {water_litres:.1f} л в день")
+    print()
 
 
-# 4. Вывод красивого результата
-# TODO: Используй f-строку, чтобы вывести приветствие, например: "Привет, Иван!"
-# TODO: Выведи возраст, ИМТ (округленный до 1 знака) и норму воды.
+output_bmi_and_water_calculation()
 print("Расчет окончен. Будьте здоровы!")
